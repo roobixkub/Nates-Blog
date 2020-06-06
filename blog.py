@@ -7,6 +7,7 @@ Created on Thu Jun  4 21:56:51 2020
 
 
 from flask import Flask
+from flask_cors import CORS
 
 import config
 import models
@@ -16,6 +17,7 @@ from resources.posts import posts_api
 
 app = Flask(__name__)
 app.register_blueprint(posts_api)
+CORS(app)
 
 @app.route('/')
 def hello_world():

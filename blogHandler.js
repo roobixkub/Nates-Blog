@@ -1,26 +1,22 @@
-new Vue({
+var blogHandler = new Vue({
   el: '#blogHandler',
   data: {
-    posts: ''
+      posts: ''
   },
-  methods: {
-
-  },
-  mounted: {
-    fetch('localhost:8000/posts')
-      .then(jsonData => (this.posts = jsonData.message))
+  mounted () {
+    fetch('http://localhost:8000/posts')
+      .then(response => response.json())
+      .then(data => (this.posts = data.posts))
   }
 });
-new Vue({
+var blogList = new Vue({
   el: '#blogList',
   data: {
-    posts: ''
+      posts: ''
   },
-  methods: {
-    
-  },
-  mounted: {
-    fetch('localhost:8000/posts')
-      .then(jsonData => (this.posts = jsonData.message))
+  mounted () {
+    fetch('http://localhost:8000/posts')
+      .then(response => response.json())
+      .then(data => (this.posts = data.posts))
   }
 });
