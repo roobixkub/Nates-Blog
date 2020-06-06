@@ -47,9 +47,9 @@ class PostList(Resource):
             location=['form', 'json']
         )
         super().__init__()
-        
+
     def get(self):
-        posts = [marshal(post, post_fields) 
+        posts = [marshal(post, post_fields)
                    for post in models.Post.select()]
         return {'posts': posts}
 
@@ -79,7 +79,7 @@ class Post(Resource):
             location=['form', 'json']
         )
         super().__init__()
-    
+
     @marshal_with(post_fields)
     def get(self, id):
         return post_or_404(id)
@@ -89,7 +89,7 @@ class Post(Resource):
         args = self.reqparse.parse_args()
         query = models.Post.update(**args).where(models.Post.id==id)
         query.execute()
-        return (models.Post.get(models.Post.id==id), 200, 
+        return (models.Post.get(models.Post.id==id), 200,
                 {'Location': url_for('resources.posts.post', id=id)})
 
     def delete(self, id):
