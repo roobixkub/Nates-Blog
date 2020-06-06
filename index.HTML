@@ -5,24 +5,58 @@
   <title>Nates Blog</title>
 </head>
 <body>
-  <div class="container">
-    <div id="blogList">
-      <ul>
-        <li>
-          <p v-for="post in posts">{{ post.title }}</p>
-        </li>
-      </ul>
-    </div>
-    <div id="blogHandler">
-      <ul>
-        <li v-for="post in posts">
-          <h1>{{ post.title }}</h1>
+  <div class="header">
+    <h2>Nates Coding Adventure</h2>
+  </div>
+  <div class="sidebar" id="blogList">
+    <ul>
+      <li>
+        <p v-for="post in posts">{{ post.title }}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="content" id="blogHandler">
+    <div class="row">
+      <div class="leftcolumn">
+        <div class="card" v-for="post in posts">
+          <h2>{{ post.title }}</h2>
+          <h5>Title description, Date</h5>
+          <div class="blogimg" style="height:200px;">Image</div>
           <p>{{ post.content }}</p>
-        </li>
-      </ul>
+        </div>
+      </div>
+      <div class="rightcolumn">
+        <div class="card">
+          <h2>About Me</h2>
+          <div class="blogimg" style="height:100px;">Image</div>
+          <p>I like long walks on the beach.</p>
+        </div>
+        <div class="card">
+          <h3>Popular Post</h3>
+          <div class="blogimg">Image</div><br>
+          <div class="blogimg">Image</div><br>
+          <div class="blogimg">Image</div>
+        </div>
+        <div class="card">
+          <h3>Follow Me</h3>
+          <p>Some text..</p>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="footer">
+    <h2>Footer</h2>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="blogHandler.js"></script>
 </body>
 </html>
+
+
+
+<!-- <ul>
+  <li v-for="post in posts">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+  </li>
+</ul> -->
